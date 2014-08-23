@@ -10,22 +10,32 @@ public class AlipeachException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-
     public AlipeachException (Throwable cause, String errorCode) {
         super (cause);
         this.errorCode = errorCode;
     }
-
 
     public AlipeachException (String message, String errorCode) {
         super (message);
         this.errorCode = errorCode;
     }
 
+    public AlipeachException (String message) {
+        super (message);
+    }
+
+    public AlipeachException (String message, Throwable cause) {
+        super (message, cause);
+    }
+
+    public AlipeachException (Throwable cause) {
+        super (cause);
+    }
+
     private String errorCode;
 
     public String getErrorCode () {
 
-        return errorCode;
+        return errorCode = ErrorCode.UNKNOWN_ERROR;
     }
 }
