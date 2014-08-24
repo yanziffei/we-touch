@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -17,7 +18,7 @@ import java.util.UUID;
  */
 @Entity
 @Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class BaseEntity implements UUIDBasedEntity, OptimisticLockBasedEntity, Serializable {
+public abstract class BaseEntity implements UUIDBasedEntity, OptimisticLockBasedEntity, DataEntity, Serializable {
 
     @Id
     @Column (name = "uuid", length = 36)
@@ -25,6 +26,12 @@ public abstract class BaseEntity implements UUIDBasedEntity, OptimisticLockBased
 
     @Column (name = "version", nullable = false)
     private Integer version = 0;
+
+    @Column (name = "creation_time", nullable = false)
+    private Date creationTime = new Date ();
+
+    @Column (name = "last_update_time", nullable = false)
+    private Date lastUpdateTime = new Date ();
 
     @Override
     public int hashCode () {
@@ -70,5 +77,25 @@ public abstract class BaseEntity implements UUIDBasedEntity, OptimisticLockBased
     @Override
     public void setVersion (Integer version) {
         this.version = version;
+    }
+
+    @Override
+    public Date getCreationTime () {
+        return creationTime;
+    }
+
+    @Override
+    public void setCreationTime (Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    @Override
+    public Date getLastUpdateTime () {
+        return lastUpdateTime;
+    }
+
+    @Override
+    public void setLastUpdateTime (Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
     }
 }
