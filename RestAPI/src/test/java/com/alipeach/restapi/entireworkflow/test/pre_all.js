@@ -1,0 +1,1 @@
+request.setAttribute ("test/pre_all", true);

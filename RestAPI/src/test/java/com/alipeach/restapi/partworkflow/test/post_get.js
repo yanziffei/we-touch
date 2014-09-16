@@ -1,0 +1,1 @@
+request.setAttribute ("test/post_get", true);
