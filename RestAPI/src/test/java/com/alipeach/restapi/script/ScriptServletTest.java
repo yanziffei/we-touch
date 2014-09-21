@@ -1,5 +1,6 @@
-package com.alipeach.restapi;
+package com.alipeach.restapi.script;
 
+import com.alipeach.restapi.script.ScriptServlet;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -14,7 +15,7 @@ import javax.servlet.ServletException;
  */
 public class ScriptServletTest {
 
-    public static final String ENTIRE_WORKFLOW_DIR = "./RestAPI/src/test/java/com/alipeach/restapi/entireworkflow/";
+    public static final String ENTIRE_WORKFLOW_DIR = "./RestAPI/src/test/java/com/alipeach/restapi/script/entireworkflow/";
 
     @Test
     public void testEntireWorkflow () throws Exception {
@@ -55,7 +56,7 @@ public class ScriptServletTest {
 
     @Test
     public void testPartWorkflow () throws Exception {
-        ScriptServlet servlet = getScriptServlet ("./RestAPI/src/test/java/com/alipeach/restapi/partworkflow/");
+        ScriptServlet servlet = getScriptServlet ("./RestAPI/src/test/java/com/alipeach/restapi/script/partworkflow/");
 
         MockHttpServletRequest request = getMockHttpServletRequest ();
         MockHttpServletResponse response = new MockHttpServletResponse ();
